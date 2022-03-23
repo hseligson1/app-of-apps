@@ -4,8 +4,6 @@ metadata:
   name: child-app-2
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   # Destination cluster and namespace to deploy the application
   destination:
