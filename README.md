@@ -2,7 +2,7 @@
 
 ## Argo CD App of Apps pattern example
 
-This repo is part of the Codefresh Certification Course, where we learn about the Argo CD App of Apps pattern and how it works.
+This repo is part of the Codefresh Certification Course where we learn about the Argo CD App of Apps pattern and demonstrate how it works.
 
 ## Prerquisites 
 
