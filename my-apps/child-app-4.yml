@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: child-app-4
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  # Destination cluster and namespace to deploy the application
+  destination:
+    namespace: my-app
+    server: https://kubernetes.default.svc
+  # The project the application belongs to.
+  project: my-project
+  # Source of the application manifests
+  source:
+    path: my-apps
+    repoURL: https://github.com/hseligson1/app-of-apps.git
+    targetRevision: HEAD
+  # Sync policy
+  syncPolicy:
+  # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+    syncOptions:
+    - CreateNamespace=true
+  # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
+    automated:
+      selfHeal: true
+      prune: true

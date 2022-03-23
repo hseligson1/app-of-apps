@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: my-project
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: argocd
+spec:
+  # Project description
+  description: The my-app bundle POC project
+  # Allow manifests to deploy from any Git repos
+  sourceRepos:
+  - '*'
+  # Only permit applications to deploy to the my-app namespace in the same cluster
+  destinations:
+  - namespace: my-app
+    server: https://kubernetes.default.svc
+  # Deny all cluster-scoped resources from being created, except for Namespace
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

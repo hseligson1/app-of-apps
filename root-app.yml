@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    name: in-cluster
+  project: my-project
+  source:
+    path: my-apps
+    repoURL: https://github.com/hseligson1/app-of-apps
+    targetRevision: HEAD
