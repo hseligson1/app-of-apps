@@ -4,6 +4,8 @@ metadata:
   name: child-app-3
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
+  annotations:
+  argocd.argoproj.io/sync-wave: "3"
 spec:
   # Destination cluster and namespace to deploy the application
   destination:
