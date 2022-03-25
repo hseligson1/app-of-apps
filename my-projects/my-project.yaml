@@ -4,6 +4,9 @@ metadata:
   name: my-project
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
+   # Finalizer that ensures that project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   # Project description
   description: The my-app bundle POC project
@@ -12,8 +15,8 @@ spec:
   - '*'
   # Only permit applications to deploy to the my-app namespace in the same cluster
   destinations:
-  - namespace: my-app
-    server: https://kubernetes.default.svc
+  - namespace: '*'
+    server: '*'
   # Deny all cluster-scoped resources from being created, except for Namespace
   clusterResourceWhitelist:
   - group: '*'
