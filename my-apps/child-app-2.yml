@@ -8,7 +8,7 @@ spec:
   # Destination cluster and namespace to deploy the application
   destination:
     namespace: my-app
-    server: https://kubernetes.default.svc
+    name: in-cluster
   # The project the application belongs to.
   project: my-project
   # Source of the application manifests

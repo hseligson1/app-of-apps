@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     namespace: my-app
-    server: https://kubernetes.default.svc
+    name: in-cluster
   project: my-project
   source:
     path: my-apps
